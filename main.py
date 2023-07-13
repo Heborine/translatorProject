@@ -4,10 +4,14 @@ from googletrans import Translator
 
 import constants
 
+# import speech_recognition as sr
+# import pyttsx3
+
 
 def task():
     # this is where everything happens
     global window
+    # gather_audio()
     translate_texts("hello")
     window.after(2000, task)
 
@@ -20,8 +24,29 @@ def translate_texts(text):
     print("The confidence was:", translation.extra_data["confidence"])
 
 
+# def gather_audio():
+#     global r
+#     try:
+#         with sr.Microphone() as source2:
+#             r.adjust_for_ambient_noise(source2, duration=0.2)
+#             audio2 = r.listen(source2)
+#             MyText = r.recognize_google(audio2)
+#             MyText = MyText.lower()
+#             print(MyText)
+#     except sr.RequestError as e:
+#         print(e)
+#     except sr.UnknownValueError:
+#         print("Unknown")
+
+
 def start_window():
-    global input_choice, output_choice, window
+    global input_choice, output_choice, window#, r
+
+    # a = pyttsx3.init("sapi5", False)
+    # a.say("Hi")
+    # a.runAndWait()
+    # r = sr.Recognizer()
+
     window = Tk()
     window.title('Translator')
     window.iconphoto(True, PhotoImage(file='misc\\icon.gif'))
