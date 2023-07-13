@@ -1,7 +1,8 @@
 from tkinter import *
 
-from googletrans import Translator, constants
+from googletrans import Translator
 
+import constants
 
 # def periodic(periodic):
 #     global window
@@ -9,6 +10,7 @@ from googletrans import Translator, constants
 #     window.after(10, periodic, periodic)
 
 def task():
+    # this is where everything happens
     global window
     translate_texts("hello")
     window.after(2000, task)
@@ -32,15 +34,14 @@ def start_window():
     label_input = Label(window, text="Input Language", width=20, height=2, fg="blue")
     label_output = Label(window, text="Output Language", width=20, height=2, fg="blue")
 
-    languages = ["english", "spanish"]
     input_choice = StringVar(window)
     input_choice.set('english')
-    input_option = OptionMenu(window, input_choice, *languages)
+    input_option = OptionMenu(window, input_choice, *constants.languages)
     input_option.config(width=20, bg="gray")
 
     output_choice = StringVar(window)
     output_choice.set('english')
-    output_option = OptionMenu(window, output_choice, *languages)
+    output_option = OptionMenu(window, output_choice, *constants.languages)
     output_option.config(width=20, bg="gray")
 
     label_input.grid(column=1, row=1, pady=10)
@@ -51,6 +52,7 @@ def start_window():
     # window.bind('<Configure', translate_texts("hello"))
     window.after(2000, task)
     window.mainloop()
+
 
 if __name__ == '__main__':
     start_window()
