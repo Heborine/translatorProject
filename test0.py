@@ -6,6 +6,8 @@ import pyaudio
 
 import time
 
+# add clear ambient noise
+
 def voice():
     # global source, init_rec
     global which
