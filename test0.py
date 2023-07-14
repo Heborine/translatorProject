@@ -6,16 +6,15 @@ import pyaudio
 
 import time
 
-# add clear ambient noise
-
 def voice():
     # global source, init_rec
     global which
     which = 1
     init_rec = sr.Recognizer()
-    print("Let's speak!!")
     with sr.Microphone() as source:
          try:
+             init_rec.adjust_for_ambient_noise(source, duration=5)
+             print("Let's speak!!")
              t1 = threading.Thread(target=record_analyze, args=(source, init_rec))
              t1.start()
              t1.join
