@@ -6,28 +6,29 @@ import pyaudio
 
 import time
 
+
 def voice():
     # global source, init_rec
     global which
     which = 1
     init_rec = sr.Recognizer()
     with sr.Microphone() as source:
-         try:
-             init_rec.adjust_for_ambient_noise(source, duration=5)
-             print("Let's speak!!")
-             t1 = threading.Thread(target=record_analyze, args=(source, init_rec))
-             t1.start()
-             t1.join
-             t2 = threading.Thread(target=record_analyze2(source, init_rec))
-             # t2 = threading.Thread(target=record_analyze2, args=(source, init_rec))
-             t2.start()
-             t2.join
-             # audio_data = init_rec.record(source, duration=5)
-             # print("Recognizing your text.............")
-             # text = init_rec.recognize_google(audio_data)
-             # print(text)
-         except:
-             print("/")
+        try:
+            init_rec.adjust_for_ambient_noise(source, duration=5)
+            print("Let's speak!!")
+            t1 = threading.Thread(target=record_analyze, args=(source, init_rec))
+            t1.start()
+            t1.join
+            t2 = threading.Thread(target=record_analyze2(source, init_rec))
+            # t2 = threading.Thread(target=record_analyze2, args=(source, init_rec))
+            t2.start()
+            t2.join
+            # audio_data = init_rec.record(source, duration=5)
+            # print("Recognizing your text.............")
+            # text = init_rec.recognize_google(audio_data)
+            # print(text)
+        except:
+            print("/")
 
 
 def record_analyze(source, init_rec):
@@ -66,19 +67,20 @@ def record_analyze2(source, init_rec):
         except:
             print("/")
 
+
 # def voice2():
 #     # print("hi")
 #     init_rec = sr.Recognizer()
 #     print("Let's speak!!")
 #     with sr.Microphone() as source2:
 #         print('hi')
-    #      try:
-    #          audio_data = init_rec.record(source2, duration=5)
-    #          print("Recognizing your text.............")
-    #          text = init_rec.recognize_google(audio_data)
-    #          print(text)
-    #      except:
-    #          print("/")
+#      try:
+#          audio_data = init_rec.record(source2, duration=5)
+#          print("Recognizing your text.............")
+#          text = init_rec.recognize_google(audio_data)
+#          print(text)
+#      except:
+#          print("/")
 
 
 # t1 = threading.Thread(target=voice)
