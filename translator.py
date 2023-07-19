@@ -9,6 +9,8 @@ import pyaudio
 # import sys
 import os
 
+from googletrans import Translator
+
 class App(threading.Thread):
 
     def __init__(self):
@@ -146,11 +148,19 @@ def dictate(text):
     # global text
     # while True:
     #     if text != "":
+    text = translate_texts(text)
     print("\n" + text + "\n")
 
 
 def osexit():
     os._exit(0)
+
+def translate_texts(text):
+    global input_choice, output_choice
+    translator = Translator()
+    translation = translator.translate(text, src=input_choice.get(), dest=output_choice.get())
+    return translation.text
+
 
 if __name__ == '__main__':
     app = App()
